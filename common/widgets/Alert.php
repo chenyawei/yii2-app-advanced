@@ -1,11 +1,12 @@
 <?php
+
 namespace common\widgets;
 
 use Yii;
 
 /**
  * Alert widget renders a message from session flash. All flash messages are displayed
- * in the sequence they were assigned using setFlash. You can set message as following:
+ * in the sequence they were assigned using setFlash. You can set message as following:.
  *
  * ```php
  * Yii::$app->session->setFlash('error', 'This is the message');
@@ -26,23 +27,22 @@ class Alert extends \yii\bootstrap\Widget
 {
     /**
      * @var array the alert types configuration for the flash messages.
-     * This array is setup as $key => $value, where:
-     * - key: the name of the session flash variable
-     * - value: the bootstrap alert type (i.e. danger, success, info, warning)
+     *            This array is setup as $key => $value, where:
+     *            - key: the name of the session flash variable
+     *            - value: the bootstrap alert type (i.e. danger, success, info, warning)
      */
     public $alertTypes = [
         'error'   => 'alert-danger',
         'danger'  => 'alert-danger',
         'success' => 'alert-success',
         'info'    => 'alert-info',
-        'warning' => 'alert-warning'
+        'warning' => 'alert-warning',
     ];
     /**
      * @var array the options for rendering the close button tag.
-     * Array will be passed to [[\yii\bootstrap\Alert::closeButton]].
+     *            Array will be passed to [[\yii\bootstrap\Alert::closeButton]].
      */
     public $closeButton = [];
-
 
     /**
      * {@inheritdoc}
@@ -51,7 +51,7 @@ class Alert extends \yii\bootstrap\Widget
     {
         $session = Yii::$app->session;
         $flashes = $session->getAllFlashes();
-        $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
+        $appendClass = isset($this->options['class']) ? ' '.$this->options['class'] : '';
 
         foreach ($flashes as $type => $flash) {
             if (!isset($this->alertTypes[$type])) {
@@ -60,11 +60,11 @@ class Alert extends \yii\bootstrap\Widget
 
             foreach ((array) $flash as $i => $message) {
                 echo \yii\bootstrap\Alert::widget([
-                    'body' => $message,
+                    'body'        => $message,
                     'closeButton' => $this->closeButton,
-                    'options' => array_merge($this->options, [
-                        'id' => $this->getId() . '-' . $type . '-' . $i,
-                        'class' => $this->alertTypes[$type] . $appendClass,
+                    'options'     => array_merge($this->options, [
+                        'id'    => $this->getId().'-'.$type.'-'.$i,
+                        'class' => $this->alertTypes[$type].$appendClass,
                     ]),
                 ]);
             }

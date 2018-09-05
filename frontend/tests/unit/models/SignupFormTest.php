@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\tests\unit\models;
 
 use common\fixtures\UserFixture;
@@ -11,14 +12,13 @@ class SignupFormTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
-
     public function _before()
     {
         $this->tester->haveFixtures([
             'user' => [
-                'class' => UserFixture::className(),
-                'dataFile' => codecept_data_dir() . 'user.php'
-            ]
+                'class'    => UserFixture::className(),
+                'dataFile' => codecept_data_dir().'user.php',
+            ],
         ]);
     }
 
@@ -26,7 +26,7 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $model = new SignupForm([
             'username' => 'some_username',
-            'email' => 'some_email@example.com',
+            'email'    => 'some_email@example.com',
             'password' => 'some_password',
         ]);
 
@@ -43,7 +43,7 @@ class SignupFormTest extends \Codeception\Test\Unit
     {
         $model = new SignupForm([
             'username' => 'troy.becker',
-            'email' => 'nicolas.dianna@hotmail.com',
+            'email'    => 'nicolas.dianna@hotmail.com',
             'password' => 'some_password',
         ]);
 
